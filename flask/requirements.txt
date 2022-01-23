@@ -1,0 +1,6 @@
+Flask
+Flask-AutoIndex
+Flask-Login
+flask_autoindex
+Jinja2==3.0.2
+Werkzeug==2.0.2
