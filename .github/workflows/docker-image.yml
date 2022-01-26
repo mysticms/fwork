@@ -8,11 +8,22 @@ on:
 
 jobs:
 
-  build:
+  build image nginx:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build the nginx image
       run: docker build nginx --file nginx/Dockerfile --tag nginx:v2
+      
+      
+  build image flask1:
+  
+    runs-on: ubuntu-latest
+    needs: [build image nginx]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the flask image
+      run: docker build flask --file flask/Dockerfile --tag flask:v1
