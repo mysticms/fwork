@@ -1,0 +1,45 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build-image-nginx:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the nginx image
+      run: docker build nginx --file nginx/Dockerfile --tag nginx:v2
+      
+      
+  build-image-flask1:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the flask image
+      run: docker build flask --file flask/Dockerfile --tag flask:v1
+      
+  deploy:
+
+    runs-on: ubuntu-latest
+    needs: [build-image-nginx, build-image-flask1 ]
+
+    steps:
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.hkey }}
+        name: id_rsa 
+        known_hosts: ${{ secrets.hostk }}
+        
+    - name: Run ansible script
+      shell: bash
+      run: ansible-playbook -v ${{ secrets.host }} ./dockerplay.yml
