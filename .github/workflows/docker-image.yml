@@ -42,4 +42,4 @@ jobs:
         
     - name: Run ansible script
       shell: bash
-      run: ansible-playbook -i ./host.yml ./dockerplay.yml
+      run: ansible-playbook -i host.yml dockerplay.yml
