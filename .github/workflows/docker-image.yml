@@ -26,3 +26,19 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the flask image
       run: docker build flask --file flask/Dockerfile --tag flask:v1
+      
+  deploy:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.hkey }}
+        name: id_rsa 
+        known_hosts: ${{ secrets.hostk }}
+        
+    - name: Run ansible script
+      shell: bash
+      run: ansible-playbook -i ${{ secrets.host }} ./dockerplay.yml
