@@ -27,20 +27,15 @@ jobs:
     - name: Build the flask image
       run: docker build flask --file flask/Dockerfile --tag flask:v1
       
-  deploy:
-
+  
+  deploy_code:
     runs-on: ubuntu-latest
-    needs: [build-image-nginx, build-image-flask1 ]
-
+    needs: [build-image-nginx, build-image-flask1]
     steps:
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.hkey }}
-        name: id_rsa 
-        known_hosts: ${{ secrets.hostk }}
-        
-    - uses: actions/checkout@v2   
-    - name: Run ansible script
-      shell: bash
-      run: ansible-playbook -i host.yml dockerplay.yml
+      - name: Run Ansible playbook
+        uses: dawidd6/action-ansible-playbook@v2.5.0
+        with:
+          playbook: dockerplay.yml
+          directory: ./
+          key: ${{ secrets.hkey }}
+          inventory: ${{ secrets.host }}
