@@ -37,4 +37,4 @@ jobs:
         with:
           playbook: dockerplay.yml
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          inventory: ${{ secrets.ANSIBLE_INVENTORY }}
+          inventory: host.yml
