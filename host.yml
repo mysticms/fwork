@@ -1,0 +1,7 @@
+all:
+  hosts:
+    lab:
+      ansible_port: 22
+      ansible_host: ${{ secrets.host }}
+      ansible_user: ${{ secrets.myst }}
+      ansible_python_interpreter: "python3"
