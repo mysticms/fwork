@@ -44,5 +44,5 @@ jobs:
 
     - name: Run a one-line script
       shell: bash
-      run: ansible-playbook -i ./hosts.yml ./dockerplay.yml -vvv
+      run: ansible-playbook -i hosts.yml dockerplay.yml -vvv
     
