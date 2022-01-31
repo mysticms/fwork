@@ -40,6 +40,7 @@ jobs:
         name: id_rsa 
         known_hosts: ${{ secrets.hostk }}
         
+    - uses: actions/checkout@v2   
     - name: Run ansible script
       shell: bash
-      run: ansible-playbook -v ${{ secrets.host }} ./dockerplay.yml
+      run: ansible-playbook -i host.yml dockerplay.yml
