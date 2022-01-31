@@ -31,12 +31,12 @@ jobs:
   deploy_code:
     runs-on: ubuntu-latest
     needs: [build-image-nginx, build-image-flask1]
+    
     steps:
-      - uses: actions/checkout@v2
-      - name: Run Ansible playbook
-        uses: dawidd6/action-ansible-playbook@v2.5.0
-        with:
-          playbook: dockerplay.yml
-          directory: ./
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          inventory: host.yml
+    - name: run playbook
+      uses: saubermacherag/ansible-playbook-docker-action@v1.4
+      with:
+       playbookName: 'dockerplay.yml'
+       inventoryFile: 'host.yml'
+       keyFile: "${{secrets.SSH_PRIVATE_KEY}}"
+       verbosity: "vvv"
