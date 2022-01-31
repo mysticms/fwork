@@ -28,8 +28,9 @@ jobs:
       run: docker build flask --file flask/Dockerfile --tag flask:v1
       
   deploy:
-    
+
     runs-on: ubuntu-latest
+    needs: [build-image-nginx, build-image-flask1 ]
 
     steps:
     - name: Install SSH key
@@ -41,4 +42,4 @@ jobs:
         
     - name: Run ansible script
       shell: bash
-      run: ansible-playbook -i ${{ secrets.host }} ./dockerplay.yml
+      run: ansible-playbook -v ${{ secrets.host }} ./dockerplay.yml
