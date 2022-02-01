@@ -36,8 +36,8 @@ jobs:
       uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        name: myst
-        known_hosts: ${{ secrets.HOST }}
+        name: id_rsa
+        known_hosts: ${{ secrets.KHOST }}
  
     - uses: actions/checkout@v2
 
