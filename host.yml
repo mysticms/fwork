@@ -1,6 +1,6 @@
 all:
   hosts:
     fwork:
-      ansible_host: 51.250.16.252
+      ansible_host: 62.84.120.216
       ansible_user: myst
       ansible_python_interpreter: "python3"
