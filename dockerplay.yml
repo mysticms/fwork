@@ -18,34 +18,15 @@
        executable: pip3
     - name: Create Directory for projects
       file: path=/opt/docker state=directory
-    - name: Copy NGINX docker 
+    - name: Copy NGINX image 
       copy:
-        src: nginx
+        src: nginx:v2
         dest: /opt/docker 
-        mode: 0755
-        owner: root
-        group: root
-    - name: Build Nginx Docker container 
-      community.docker.docker_image:
-        build: 
-          path: /opt/docker/nginx
-        name: nginx
-        tag: v2
-        source: build 
-    - name: Copy Flask docker 
+
+    - name: Copy Flask image 
       copy:
-        src: flask
+        src: flask:v1
         dest: /opt/docker 
-        mode: 0755
-        owner: root
-        group: root
-    - name: Build Flask Docker container 
-      community.docker.docker_image:
-        build: 
-          path: /opt/docker/flask
-        name: flask
-        tag: v1
-        source: build 
     - name: Create a network
       community.docker.docker_network:
         name: flask
