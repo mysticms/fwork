@@ -24,12 +24,12 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Run Ansible playbook
-        uses: arillso/action.playbook@0.0.4
+        uses: dawidd6/action-ansible-playbook@v2.5.0
         with:
           playbook: dockerplay.yml
-          private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           inventory: ${{ secrets.INVENTORY }}
-          user: ${{ secrets.USER }}
+          
 
 
       
