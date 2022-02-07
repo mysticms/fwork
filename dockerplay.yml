@@ -35,13 +35,11 @@
         name: nginx:v2
         load_path: /opt/docker/nginx.tar
         state: present
-        source: load
-     - name: extract image nginx
+     - name: extract image flask
        docker_image:
          name: flask:v1
          load_path: /opt/docker/flask.tar
          state: present
-         source: load
     - name: Run Flask 1
       docker_container:
          name: flask1
