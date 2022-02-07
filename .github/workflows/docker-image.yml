@@ -25,6 +25,7 @@ jobs:
         uses: ministryofjustice/ansible-playbook-with-keyvault-action@v1.1
         with:
           ansible_playbook: dockerplay.yml
+          ansible_dir: ./
           keyvault_secret_name_ssh_privkey: ${{ secrets.SSH_PRIVATE_KEY }}
           ansible_inventory: ${{ secrets.INVENTORY }}
 
