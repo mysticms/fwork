@@ -9,12 +9,12 @@ on:
 jobs:
   login_dockerhub:
   
-  - name: Docker Login
-
-  uses: docker/login-action@v1.12.0
-  with:
-    username: ${{ secrets.GHUSER }}
-    password: ${{ secrets.GHPASS }}
+    steps:
+    - uses: docker/login-action@v1.12.0
+    - name: Docker Login
+    with:
+      username: ${{ secrets.GHUSER }}
+      password: ${{ secrets.GHPASS }}
 
 
   build-image-nginx:
