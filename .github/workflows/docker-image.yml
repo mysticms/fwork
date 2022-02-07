@@ -22,6 +22,7 @@ jobs:
           path: /tmp
       -
         name: Run Ansible playbook
+        uses: actions/checkout@v2
         uses: arillso/action.playbook@0.0.4
         with:
           playbook: dockerplay.yml
