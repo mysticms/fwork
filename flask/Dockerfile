@@ -3,7 +3,7 @@ From python:3
 RUN groupadd -r flask && useradd --no-log-init -r -g flask flask
 
 WORKDIR /usr/src/app
-COPY requirements.txt ./
+COPY flask/requirements.txt ./
 RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip3 install --no-cache-dir -r requirements.txt
 
