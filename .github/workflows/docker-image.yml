@@ -28,6 +28,7 @@ jobs:
       run: docker build flask --file flask/Dockerfile --tag flask:v1
       
   save_kont:
+    needs: [build-image-flask1,build-image-nginx]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
