@@ -7,6 +7,15 @@ on:
     branches: [ main ]
 
 jobs:
+  login_dockerhub:
+  
+  - name: Docker Login
+
+  uses: docker/login-action@v1.12.0
+  with:
+    username: ${{ secrets.GHUSER }}
+    password: ${{ secrets.GHPASS }}
+
 
   build-image-nginx:
 
@@ -28,20 +37,5 @@ jobs:
       run: docker build flask --file flask/Dockerfile --tag flask:v1
       
   
-  deploy_code:
-    runs-on: ubuntu-latest
-    needs: [build-image-nginx, build-image-flask1]
-    steps:
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        name: id_rsa
-        known_hosts: ${{ secrets.KHOST }}
- 
-    - uses: actions/checkout@v2
 
-    - name: Run a one-line script
-      shell: bash
-      run: ansible-playbook -i host.yml dockerplay.yml -vv
     
