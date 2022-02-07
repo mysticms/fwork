@@ -22,12 +22,12 @@ jobs:
           path: /tmp
       -
         name: Run Ansible playbook
-        uses: ministryofjustice/ansible-playbook-with-keyvault-action@v1.1
+        uses: arillso/action.playbook@0.0.4
         with:
-          ansible_playbook: dockerplay.yml
-          ansible_dir: ./
-          keyvault_secret_name_ssh_privkey: ${{ secrets.SSH_PRIVATE_KEY }}
-          ansible_inventory: ${{ secrets.INVENTORY }}
+          playbook: dockerplay.yml
+          private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          inventory: ${{ secrets.INVENTORY }}
+          user: ${{ secrets.USER }}
 
 
       
