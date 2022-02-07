@@ -30,10 +30,14 @@ jobs:
   save_kont:
     runs-on: ubuntu-latest
     steps:
-    - name: Download a Build Artifact
-    - uses: actions/download-artifact@v2.1.0
+    - uses: actions/checkout@v2
+
+    - uses: actions/download-artifact@v2
       with:
         name: nginx:v2
+    
+    - name: Display structure of downloaded files
+      run: ls -R
 
       
   
