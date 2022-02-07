@@ -20,16 +20,28 @@
       file: path=/opt/docker state=directory
     - name: Copy NGINX image 
       copy:
-        src: nginx:v2
+        src: /tmp/nginx.tar
         dest: /opt/docker 
 
     - name: Copy Flask image 
       copy:
-        src: flask:v1
+        src: /tmp/flask.tar
         dest: /opt/docker 
     - name: Create a network
       community.docker.docker_network:
         name: flask
+    - name: extract image nginx
+      docker_image:
+        name: nginx:v2
+        load_path: /opt/docker/nginx.tar
+        state: present
+        source: load
+     - name: extract image nginx
+       docker_image:
+         name: flask:v1
+         load_path: /opt/docker/flask.tar
+         state: present
+         source: load
     - name: Run Flask 1
       docker_container:
          name: flask1
