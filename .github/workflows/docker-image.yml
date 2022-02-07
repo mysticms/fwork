@@ -27,7 +27,7 @@ jobs:
           playbook: dockerplay.yml
           directory: ./
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          inventory: ${{ secrets.INVENTORY }}
+          inventory: host.yml
 
 
       
