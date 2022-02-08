@@ -21,12 +21,12 @@
     - name: Copy NGINX image 
       copy:
         src: /tmp/nginx.tar
-        dest: /opt/docker 
+        dest: /opt/docker/nginx.tar 
 
     - name: Copy Flask image 
       copy:
         src: /tmp/flask.tar
-        dest: /opt/docker 
+        dest: /opt/docker/flask.tar 
     - name: Create a network
       community.docker.docker_network:
         name: flask
