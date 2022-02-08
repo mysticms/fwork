@@ -21,12 +21,12 @@
     - name: Copy NGINX image 
       copy:
         src: /tmp/nginx.tar
-        dest: /opt/docker/nginx.tar 
+        dest: /opt/docker
 
     - name: Copy Flask image 
       copy:
         src: /tmp/flask.tar
-        dest: /opt/docker/flask.tar 
+        dest: /opt/docker
     - name: Create a network
       community.docker.docker_network:
         name: flask
@@ -34,7 +34,7 @@
       docker_image:
          name: nginx
          tag: v2
-         load_path: /opt/docker/nginx.tar
+         load_path: /opt/docker
          source: load
     - name: extract image flask
       docker_image:
