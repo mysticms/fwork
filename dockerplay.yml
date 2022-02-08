@@ -39,14 +39,14 @@
       docker_image:
          name: nginx
          tag: v2
-         load_path: /opt/docker/nginx.tar
+         load_path: /opt/docker/nginx.tar/nginx.tar
          state: present
          source: load
     - name: extract image flask
       docker_image:
          name: flask
          tag: v1
-         load_path: /opt/docker/flask.tar
+         load_path: /opt/docker/flask.tar/flask.tar
          state: present
          source: load
     - name: Run Flask 1
