@@ -34,7 +34,7 @@
       docker_image:
          name: nginx
          tag: v2
-         load_path: /opt/docker
+         load_path: /opt/docker/nginx.tar
          source: load
     - name: extract image flask
       docker_image:
