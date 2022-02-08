@@ -66,10 +66,9 @@ jobs:
           playbook: dockerplay.yml
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           inventory: ${{ secrets.INVENTORY }}
-          
+          options: vvv
 
 
-      #
   
 
     
