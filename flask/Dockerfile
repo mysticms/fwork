@@ -7,7 +7,7 @@ COPY flask/requirements.txt ./
 RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-COPY flask/ .
+COPY flask/* .
 
 ENV FLASK_APP=autof
 ENV FLASK_DEBUG=1
